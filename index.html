@@ -12,7 +12,7 @@
       name="keywords"
       content="age calculator, milliseconds age, days old, birthday calculator, age in ms"
     />
-    <meta name="author" content="Manuel Westermeier" />
+    <meta name="author" content="Annonym" />
     <link rel="canonical" href="https://live-time.duckdns.org/" />
     <!-- Open Graph -->
     <meta property="og:title" content="Calculate Your Age in Milliseconds" />
@@ -37,6 +37,8 @@
       name="twitter:image"
       content="https://live-time.duckdns.org/thumbnail.png"
     />
+
+    <link rel="icon" href="favicon.ico" />
 
     <style>
       :root {
@@ -119,7 +121,7 @@
   </head>
   <body>
     <header>
-      <h1>How many milliseconds old are you?</h1>
+      <h1>How many milliseconds/days old are you?</h1>
     </header>
     <main>
       <form id="age-form" aria-label="Age calculator in milliseconds">
@@ -151,6 +153,8 @@
       const msPerDay = 24 * 60 * 60 * 1000;
 
       function updateAge() {
+        requestAnimationFrame(updateAge);
+
         if (!birthDayInput.value) {
           outputElem.textContent =
             "Please enter your birthday to see your age.";
