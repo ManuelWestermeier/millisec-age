@@ -73,28 +73,26 @@
       function update() {
         requestAnimationFrame(update);
 
-        if (!birthDayInput.value)
-          return (outputElem.innerText = "Please input your Birthday");
+        if (!birthDayInput.value) {
+          outputElem.innerText = "Please input your Birthday";
+          return;
+        }
 
         const now = Date.now();
-        const inputDate = new Date();
-        const [year, month, date] = birthDayInput.value
-          .split("-")
-          .map(parseInt);
-        inputDate.setFullYear(year);
-        inputDate.setMonth(month);
-        inputDate.setDate(date);
+        const [yearStr, monthStr, dateStr] = birthDayInput.value.split("-");
+        const year = parseInt(yearStr);
+        const month = parseInt(monthStr) - 1;
+        const day = parseInt(dateStr);
 
-        const timePointBackThen = inputDate.getUTCDate();
+        const inputDate = new Date(year, month, day);
+        const timePointBackThen = inputDate.getTime();
 
         const timePassed = now - timePointBackThen;
 
-        console.log(timePointBackThen);
-
         const daysPassed = Math.floor(timePassed / millisecoundsADay);
-        const millisecoundsPassed = timePassed - daysPassed * millisecoundsADay;
+        const millisecoundsPassed = timePassed % millisecoundsADay;
 
-        outputElem.innerText = `sine your Birthday (${birthDayInput.value})\n\t${daysPassed} Days and \n\t${millisecoundsPassed} millisecounds\nhave passed. (That are ${timePassed} millisecounds)`;
+        outputElem.innerText = `Since your Birthday (${birthDayInput.value})\n\t${daysPassed} days and \n\t${millisecoundsPassed} milliseconds\nhave passed. (That is ${timePassed} milliseconds total)`;
       }
 
       requestAnimationFrame(update);
