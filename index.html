@@ -6,13 +6,14 @@
     <title>Calculate Your Age in Milliseconds | Millisec-Age</title>
     <meta
       name="description"
-      content="Discover exactly how many days and milliseconds old you are! Enter your birthday to get an up-to-the-moment calculation."
+      content="Discover exactly how many days and milliseconds old you are! Enter your birthday to get an up-to-the-moment calculation of your age in milliseconds."
     />
     <meta
       name="keywords"
-      content="age calculator, milliseconds age, days old, birthday calculator, age in ms"
+      content="age calculator, milliseconds age, days old, birthday calculator, calculate age in milliseconds, birthdate age, time calculator"
     />
     <meta name="author" content="Annonym" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://live-time.duckdns.org/" />
     <!-- Open Graph -->
     <meta property="og:title" content="Calculate Your Age in Milliseconds" />
@@ -115,7 +116,12 @@
         "description": "Calculate how many days and milliseconds old you are.",
         "applicationCategory": "Tools",
         "inLanguage": "en",
-        "operatingSystem": "All"
+        "operatingSystem": "All",
+        "softwareVersion": "1.0",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Millisec-Age"
+        }
       }
     </script>
   </head>
@@ -131,6 +137,7 @@
           id="birthday-input"
           name="birthday"
           placeholder="YYYY-MM-DD"
+          value="2000-01-01" <!-- Default date set to 1.1.2000 -->
           required
           aria-required="true"
         />
@@ -169,7 +176,7 @@
         const msRemainder = ageMs % msPerDay;
 
         outputElem.textContent =
-          `${ageMs > 0 ? "Since" : "In Futur"} your birthday (${birthDayInput.value}):\n` +
+          `${ageMs > 0 ? "Since" : "In Future"} your birthday (${birthDayInput.value}):\n` +
           `  • ${Math.abs(days)} days\n` +
           `  • ${Math.abs(msRemainder)} milliseconds\n` +
           `(Total: ${Math.abs(ageMs)} milliseconds)`;
