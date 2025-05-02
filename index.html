@@ -169,10 +169,10 @@
         const msRemainder = ageMs % msPerDay;
 
         outputElem.textContent =
-          `Since your birthday (${birthDayInput.value}):\n` +
-          `  • ${days} days\n` +
-          `  • ${msRemainder} milliseconds\n` +
-          `(Total: ${ageMs} milliseconds)`;
+          `${ageMs > 0 ? "Since" : "In Futur"} your birthday (${birthDayInput.value}):\n` +
+          `  • ${Math.abs(days)} days\n` +
+          `  • ${Math.abs(msRemainder)} milliseconds\n` +
+          `(Total: ${Math.abs(ageMs)} milliseconds)`;
       }
 
       birthDayInput.addEventListener("input", updateAge);
